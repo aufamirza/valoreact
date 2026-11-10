@@ -1,0 +1,1 @@
+import{lC as e,mC as t}from"./messages-B-BFLRws.js";import{T as n}from"./useButton-6Am-M03O.js";var r=t(e()).forwardRef(function(e,t){let{className:r,render:i,orientation:a=`horizontal`,...o}=e;return n(`div`,e,{state:{orientation:a},ref:t,props:[{role:`separator`,"aria-orientation":a},o]})});export{r as t};

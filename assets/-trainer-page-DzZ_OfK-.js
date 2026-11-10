@@ -1,0 +1,1 @@
+import{nC as e}from"./messages-CC6DXzhU.js";import{n as t,t as n}from"./header-DPvIbpCE.js";import{t as r}from"./landing-shell-DuUcZVa4.js";var i=e();function a({children:e}){return(0,i.jsxs)(r,{children:[(0,i.jsx)(n,{}),e,(0,i.jsx)(t,{})]})}export{a as t};

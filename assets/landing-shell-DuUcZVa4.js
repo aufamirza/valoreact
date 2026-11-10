@@ -1,0 +1,1 @@
+import{nC as e}from"./messages-CC6DXzhU.js";var t=e();function n({children:e}){return(0,t.jsx)(`div`,{className:`relative min-h-screen overflow-x-hidden`,children:e})}export{n as t};

@@ -1,0 +1,1 @@
+import{t as e}from"./coach-retired-DrkBjZ1P.js";var t=e;export{t as component};

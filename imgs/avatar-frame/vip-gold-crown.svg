@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <defs>
+    <!-- Gold Metallic Gradients -->
+    <linearGradient id="gold-metallic" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFEAA7" />
+      <stop offset="25%" stop-color="#DDA232" />
+      <stop offset="50%" stop-color="#FFF1BF" />
+      <stop offset="75%" stop-color="#9E6C18" />
+      <stop offset="100%" stop-color="#F3C148" />
+    </linearGradient>
+
+    <linearGradient id="gold-glow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFD966" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#E5A11D" stop-opacity="0.3" />
+    </linearGradient>
+
+    <linearGradient id="dark-metal" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2A2722" />
+      <stop offset="100%" stop-color="#181613" />
+    </linearGradient>
+
+    <!-- Amber Gem Gradient -->
+    <radialGradient id="amber-gem" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#FFF9D2" />
+      <stop offset="30%" stop-color="#FFAA00" />
+      <stop offset="80%" stop-color="#C45D00" />
+      <stop offset="100%" stop-color="#6B2900" />
+    </radialGradient>
+
+    <!-- Subtle Golden Glow Filter -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <filter id="crown-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#000000" flood-opacity="0.8" />
+    </filter>
+  </defs>
+
+  <!-- Ambient Outer Glow Ring -->
+  <circle cx="100" cy="100" r="82" stroke="#FFB300" stroke-width="1.5" stroke-opacity="0.4" filter="url(#glow)" />
+
+  <!-- Base Dark Ring Chassis -->
+  <circle cx="100" cy="100" r="80" stroke="url(#dark-metal)" stroke-width="6" />
+
+  <!-- Main Metallic Gold Frame Ring -->
+  <circle cx="100" cy="100" r="80" stroke="url(#gold-metallic)" stroke-width="3.5" />
+
+  <!-- Thin Inner Accent Line -->
+  <circle cx="100" cy="100" r="76.5" stroke="#FFEAA7" stroke-width="1" stroke-opacity="0.9" />
+
+  <!-- Tactical Reticle Ticks & Brackets (Left, Right, Bottom) -->
+  <!-- Left tick (9 o'clock) -->
+  <path d="M18 100 H26" stroke="#FFF" stroke-width="1.5" stroke-linecap="round" filter="url(#glow)" />
+  <circle cx="27" cy="100" r="1.5" fill="#FFAA00" />
+  <path d="M23 93 L19 97 V103 L23 107" stroke="url(#gold-metallic)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- Right tick (3 o'clock) -->
+  <path d="M174 100 H182" stroke="#FFF" stroke-width="1.5" stroke-linecap="round" filter="url(#glow)" />
+  <circle cx="173" cy="100" r="1.5" fill="#FFAA00" />
+  <path d="M177 93 L181 97 V103 L177 107" stroke="url(#gold-metallic)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- Bottom Notch / Tactical Chevron (6 o'clock) -->
+  <path d="M100 182 V174" stroke="#FFF" stroke-width="1.5" stroke-linecap="round" filter="url(#glow)" />
+  <polygon points="100,186 93,178 107,178" fill="url(#gold-metallic)" stroke="#181613" stroke-width="1" />
+  <circle cx="100" cy="176" r="1.5" fill="#FFAA00" />
+
+  <!-- Top VIP Crown Crest - EXACT ORIGINAL SHAPE SCALED UP 1.35x -->
+  <g id="crown-crest" filter="url(#crown-shadow)" transform="translate(100.0, 30.0) scale(1.35) translate(-100.0, -32.0)">
+    <!-- Crown Wing Base Backing -->
+    <path d="M74 36 L100 23 L126 36 L119 40 L100 30 L81 40 Z" fill="#1B1915" stroke="#000" stroke-width="1" />
+
+    <!-- Crown Side Wings -->
+    <path d="M70 37 L82 17 L91 32 L85 36 Z" fill="url(#gold-metallic)" stroke="#5E3D06" stroke-width="1" />
+    <path d="M130 37 L118 17 L109 32 L115 36 Z" fill="url(#gold-metallic)" stroke="#5E3D06" stroke-width="1" />
+
+    <!-- Crown Center Spire -->
+    <path d="M92 33 L100 11 L108 33 L100 36 Z" fill="url(#gold-metallic)" stroke="#5E3D06" stroke-width="1" />
+
+    <!-- Center Diamond Crystal Gem -->
+    <polygon points="100,19 105,26 100,33 95,26" fill="url(#amber-gem)" stroke="#FFF" stroke-width="0.8" filter="url(#glow)" />
+    <circle cx="100" cy="26" r="1" fill="#FFF" />
+
+    <!-- Crown Base Arch -->
+    <path d="M84 35 Q100 28 116 35 L113 39 Q100 32 87 39 Z" fill="#FFE89E" />
+  </g>
+</svg>

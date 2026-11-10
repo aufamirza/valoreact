@@ -1,0 +1,12 @@
+# Dependencies
+node_modules/
+
+# Backup folders
+_orig_backup/
+_rebrand_backup/
+
+# Temporary outputs (screenshots, dumps, state)
+_shot_*.png
+_*.txt
+_sp_state.json
+*.log

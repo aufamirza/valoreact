@@ -1,0 +1,1 @@
+import{cC as e,rC as t}from"./messages-CC6DXzhU.js";import{T as n}from"./useButton-C6NcK48-.js";var r=e(t()).forwardRef(function(e,t){let{className:r,render:i,orientation:a=`horizontal`,...o}=e;return n(`div`,e,{state:{orientation:a},ref:t,props:[{role:`separator`,"aria-orientation":a},o]})});export{r as t};

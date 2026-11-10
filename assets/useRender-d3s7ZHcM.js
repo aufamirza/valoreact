@@ -1,0 +1,1 @@
+import{T as e}from"./useButton-6Am-M03O.js";function t(t){return e(t.defaultTagName??`div`,t,t)}export{t};

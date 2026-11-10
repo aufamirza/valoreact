@@ -1,0 +1,1 @@
+import{cC as e}from"./messages-B-BFLRws.js";var t=e();function n({children:e}){return(0,t.jsx)(`div`,{className:`relative min-h-screen overflow-x-hidden`,children:e})}export{n as t};

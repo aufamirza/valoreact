@@ -1,0 +1,1 @@
+import{T as e}from"./useButton-C6NcK48-.js";function t(t){return e(t.defaultTagName??`div`,t,t)}export{t};

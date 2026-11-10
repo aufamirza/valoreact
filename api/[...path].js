@@ -2,6 +2,23 @@
 // Tujuan: perilaku online identik dengan localhost (fake user, semua skin terbuka, tanpa paywall).
 export const config = { runtime: 'nodejs' };
 
+import { readFileSync, readdirSync } from 'node:fs';
+import path from 'node:path';
+
+// Derivasi semua skin id dari katalog fallback milik client (paradigma yang sama dengan server.mjs)
+function allSkinIds() {
+  const ids = new Set(['rgx']);
+  try {
+    const dir = path.join(process.cwd(), 'assets');
+    for (const file of readdirSync(dir)) {
+      if (!file.endsWith('.js')) continue;
+      const t = readFileSync(path.join(dir, file), 'utf8');
+      for (const m of t.matchAll(/id:`([\w-]+)`/g)) ids.add(m[1]);
+    }
+  } catch {}
+  return [...ids];
+}
+
 const FINE = JSON.stringify({ code: 0 });
 const OK = (data) => ({ code: 0, data });
 const FAIL = (message, extra = {}) => ({ code: 1, message, ...extra });
@@ -14,8 +31,9 @@ const FAKE_USER = {
   createdAt: '2025-01-01T00:00:00.000Z',
 };
 
-// State in-memory per instance warm (cukup untuk parity furnish; cold start balik ke default)
-const state = { equipped: [{ skinId: 'rgx' }], owned: new Set(['rgx']) };
+// State in-memory per instance warm; saat cold start owned diisi dari katalog client
+const state = { equipped: [{ skinId: 'rgx' }], owned: null };
+const ensureOwned = () => { if (!state.owned) state.owned = new Set(allSkinIds()); return state.owned; };
 
 async function readBody(req) {
   try {
@@ -52,6 +70,7 @@ async function handler(req, res) {
   if (p === '/api/game/skin-catalog') return json(200, { code: -1, message: 'offline' });
   if (p === '/api/leaderboard') return json(200, OK({ entries: [], modes: [], nextUpdateAt: null }));
   if (p === '/api/user/sp') {
+    ensureOwned();
     return json(200, OK({
       equipped: state.equipped,
       owned: [...state.owned],
@@ -63,6 +82,7 @@ async function handler(req, res) {
     const body = await readBody(req);
     const skinId = String(body?.skinId || '');
     if (!skinId) return json(200, FAIL('skinId required'));
+    ensureOwned();
     state.equipped = [{ skinId }];
     state.owned.add(skinId);
     return json(200, OK({ ok: true, equipped: state.equipped }));
@@ -71,6 +91,7 @@ async function handler(req, res) {
     const body = await readBody(req);
     const skinId = String(body?.skinId || '');
     if (!skinId) return json(200, FAIL('skinId required'));
+    ensureOwned();
     state.owned.add(skinId);
     state.equipped = [{ skinId }];
     return json(200, OK({ ok: true, owned: [...state.owned] }));

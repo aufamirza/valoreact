@@ -2,22 +2,8 @@
 // Tujuan: perilaku online identik dengan localhost (fake user, semua skin terbuka, tanpa paywall).
 export const config = { runtime: 'nodejs' };
 
-import { readFileSync, readdirSync } from 'node:fs';
-import path from 'node:path';
-
-// Derivasi semua skin id dari katalog fallback milik client (paradigma yang sama dengan server.mjs)
-function allSkinIds() {
-  const ids = new Set(['rgx']);
-  try {
-    const dir = path.join(process.cwd(), 'assets');
-    for (const file of readdirSync(dir)) {
-      if (!file.endsWith('.js')) continue;
-      const t = readFileSync(path.join(dir, file), 'utf8');
-      for (const m of t.matchAll(/id:`([\w-]+)`/g)) ids.add(m[1]);
-    }
-  } catch {}
-  return [...ids];
-}
+// State awal dibake dari _sp_state.json localhost (40 skin owned + equip cryostasis)
+const INITIAL_OWNED = ['rgx','champions2026','warden','aemondir','aeris','ayakashi','blackthorn','champion2021','champion2024','champions2023','chaos','chronovoid','cryostasis','cyrax','vandal_default','divergence','dolmirs_revenge','elderflame','evori_dreamwings','forsaken','gaias','glitchpop','holo_meridian','imperium','ion','kuronami','mystbloom','neo_frontier','oni','origin','prime_vandal','primordium','radiant_entertainment','reaver','recon','rogue','ruination','singularity','solarstride','valiant_hero'];
 
 const FINE = JSON.stringify({ code: 0 });
 const OK = (data) => ({ code: 0, data });
@@ -31,9 +17,9 @@ const FAKE_USER = {
   createdAt: '2025-01-01T00:00:00.000Z',
 };
 
-// State in-memory per instance warm; saat cold start owned diisi dari katalog client
-const state = { equipped: [{ skinId: 'rgx' }], owned: null };
-const ensureOwned = () => { if (!state.owned) state.owned = new Set(allSkinIds()); return state.owned; };
+// State in-memory per instance warm; pembelian/equip bersifat per-instance
+const state = { equipped: [{ skinId: 'cryostasis' }], owned: new Set(INITIAL_OWNED) };
+const ensureOwned = () => state.owned;
 
 async function readBody(req) {
   try {

@@ -1,0 +1,11 @@
+# Folder kerja lokal (mirror server & backup) — dibutuhkan ke deploy Vercel
+_pages
+_orig_backup
+_rebrand_backup
+server.mjs
+
+# Tooling & hasil dump lokal
+_*.cjs
+_*.txt
+_*.png
+_*.json

@@ -10,3 +10,5 @@ _shot_*.png
 _*.txt
 _sp_state.json
 *.log
+
+.vercel

@@ -1,0 +1,28 @@
+{
+ "state": {
+  "enemies": 1,
+  "enemyRect": {
+   "x": 824.125,
+   "y": 409.15625,
+   "w": 143.75,
+   "h": 139.90625
+  },
+  "enemyCountVisible": 1,
+  "bodySample": "MEOW TRAINING EN P PLAYER SP 9,999,999,999 0 Best score: 0 ESC Pause R Restart Y Inspect TAB Scores"
+ },
+ "reqs": [
+  "200 GET /api/auth/get-session",
+  "200 GET /api/config/public",
+  "200 GET /api/game/skin-catalog",
+  "200 GET /api/user/permissions",
+  "200 GET /api/user/membership",
+  "200 GET /api/user/aim-trainer/best-scores",
+  "200 GET /api/user/aim-trainer/training-records?page=1&pageSize=10",
+  "200 GET /api/user/sp",
+  "200 GET /api/game/skin-catalog",
+  "200 POST /api/user/sp/training-sessions",
+  "200 POST /api/user/sp/daily-login",
+  "200 GET /api/user/sp"
+ ],
+ "errors": []
+}
